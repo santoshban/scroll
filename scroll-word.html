@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Text animation with TweenMax</title>
+        <meta name="description" content="Text animation with TweenMax">
+        <meta name="viewport" content="width=device-width">
+        
+        <link rel="stylesheet" type="text/css" href="style1.css">
+        
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+		
+		<script type="text/javascript">		
+
+			$(function(){
+				
+				var $startAnim = $("#start-anim");
+				var $demoText = $("#demo-text");
+				
+				//Split the text into words and wrap every word into span element
+				$demoText.html( $demoText.html().replace(/\w+/g, "<span>$&</span>"));
+				
+				$startAnim.on("click", startAnimation);
+				
+				function startAnimation(){
+					TweenLite.set($startAnim, {autoAlpha:0});
+						
+					TweenMax.staggerFromTo( $demoText.find("span"), 0.5, {autoAlpha:0, color:"red", scale:0, top:"0px", rotation:0}, {autoAlpha:1, color:"black", scale:1, top:"0px", rotation:0}, 0.4 , reset );	
+				}
+				
+				function reset(){
+					TweenMax.to($startAnim, 1, {autoAlpha:1});
+				}
+				
+			});
+
+		</script>
+		
+    </head>
+    <body>
+		
+		
+		
+		<header>
+			<div class="head-button" id="start-anim">Start animation</div>
+		</header>
+		
+		<div id="demo-text">Since 1954, Pryor Tzannes and Wallis has continued to build upon its sound reputation as an industry leader. With our integrity, experience and innovation, we instil clients with unadulterated confidence and provide the highest quality representation.</div>
+		
+    </body>
+</html>

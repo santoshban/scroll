@@ -13,9 +13,9 @@
             
             #holder{
                 position: fixed;
-                width: 900px;
+                width: 1100px;
                 top: 100px;
-                left: 50%;
+                left: 45%;
                 margin-left: -450px;
                 z-index: 9999;
             }
@@ -52,7 +52,7 @@
                 //Split the text into characters and wrap every character into span element, then convert the whitespaces to whitespace characters.
                 $demoText.html( $demoText.html());
 
-                alert($demoText.html());
+                // alert($demoText.html());
                 
                 var $scrollPercentText = $("#scroll-percent");
                 
@@ -63,7 +63,21 @@
                 
                 //let's add the animation into TimelineMax
                 var timeline = new TimelineMax({paused:true});
-                timeline.staggerFromTo( $demoText.find("p"), 2, {autoAlpha:0, color:"white", scale:4, top:"-50px", left:"-20px", rotation:-270}, {autoAlpha:1, color:"#8f805d", scale:1, top:"0px", left:"0px", rotation:0}, 1 );
+                timeline.staggerFromTo( $demoText.find("p"), 2, {
+                    autoAlpha:0, 
+                    color:"white", 
+                    scale:2, 
+                    top:"0px", 
+                    left:"0px", 
+                    rotation:0
+                }, {
+                    autoAlpha:1, 
+                    color:"#8f805d", 
+                    scale:1, 
+                    top:"0px", 
+                    left:"0px", 
+                    rotation:0
+                }, 1 );
                 
                 $window.on("resize", function(){
                     windowHeight = $window.height();
